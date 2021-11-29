@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:abdroid="http://schemas.android.com/apk/res-auto"
+    tools:context=".MessagingService$ActivityLogin"
+    android:background="@color/bg_color"
+    android:orientation="vertical">
+
+    <FrameLayout
+        android:id="@+id/admin"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_margin="20dp">
+
+
+            <LinearLayout
+                android:layout_marginTop="50dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:id="@+id/logo"
+                    android:layout_width="250dp"
+                    android:layout_height="200dp"
+                    android:foregroundGravity="center"
+                    android:src="@drawable/salonkitalogo"
+                    android:layout_gravity="center"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:layout_gravity="center"
+                    android:text="Salon Kita"
+                    android:textColor="#3498DB"
+                    android:textStyle="bold"
+                    android:textAlignment="center"
+                    android:textSize="30sp" />
+
+
+            </LinearLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/editEmailLoginLayout"
+                android:layout_marginTop="16dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Email"
+                abdroid:startIconDrawable="@drawable/ic_baseline_email_24"
+                app:boxStrokeColor="#3498DB"
+                android:textColorHint="#3498DB"
+                app:hintTextColor="#3498DB"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/edtEmailLogin"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textCursorDrawable="@drawable/cursor"
+                    android:inputType="textEmailAddress"
+                    android:textSize="25sp"/>
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/editPasswordLoginLayout"
+                android:layout_marginTop="16dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                abdroid:startIconDrawable="@drawable/ic_baseline_lock_24"
+                android:hint="Password"
+                app:placeholderTextColor="#3498DB"
+                android:textColorHint="#3498DB"
+                app:boxStrokeColor="#3498DB"
+                app:hintTextColor="#3498DB"
+                app:helperText="Masukkan Password"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense">
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/edtPasswordLogin"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textPassword"
+                    android:textCursorDrawable="@drawable/cursor"
+                    android:textSize="25sp" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <CheckBox
+                android:id="@+id/cbShowPw"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Show Password"
+                />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    >
+                    <Button
+                        android:id="@+id/btnClear"
+                        android:layout_marginTop="20dp"
+                        android:layout_width="140dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="20dp"
+                        android:layout_gravity="center"
+                        android:text="Clear"
+                        android:textAlignment="gravity"
+                        app:backgroundTint="#FAFAFA"
+                        android:textSize="25sp"
+                        android:textColor="@color/design_default_color_primary"
+                        />
+
+                    <Button
+                        android:id="@+id/btnLogin"
+                        android:layout_marginTop="20dp"
+                        android:layout_width="150dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginEnd="10dp"
+                        android:text="Login"
+                        android:textAlignment="gravity"
+                        app:backgroundTint="#3498DB"
+                        android:textSize="25sp" />
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_gravity="center">
+
+                    <TextView
+                        android:id="@+id/textView3"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:textColor="@color/SecondaryText"
+                        android:text="Belum Punya Akun ?"
+                        android:textAlignment="center"
+                        android:textSize="18dp"/>
+
+                    <Button
+                        style="@style/Widget.MaterialComponents.Button.TextButton"
+                        android:id="@+id/btnRegister1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:text="Register"
+                        android:textColor="#3498DB"
+                        android:textSize="15sp" />
+                </LinearLayout>
+            </LinearLayout>
+            <TextView
+                android:id="@+id/textview"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+        </LinearLayout>
+    </FrameLayout>
+</LinearLayout>
