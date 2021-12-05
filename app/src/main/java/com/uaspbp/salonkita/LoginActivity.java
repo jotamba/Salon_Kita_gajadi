@@ -153,8 +153,8 @@ public class LoginActivity extends AppCompatActivity {
     private void addNotification(){
         NotificationCompat.Builder builder = new NotificationCompat.Builder( this, CHANNEL_ID)
                 .setSmallIcon(R.drawable.ic_launcher_background)
-                .setContentTitle("Login Successful")
-                .setContentText("Welcome")
+                .setContentTitle("Login Berhasil")
+                .setContentText("Selamat Datang")
                 .setPriority(NotificationCompat.PRIORITY_DEFAULT);
 
         Intent notificationIntent = new Intent( this, MainActivity.class);
