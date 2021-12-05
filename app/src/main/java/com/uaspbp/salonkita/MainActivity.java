@@ -14,7 +14,7 @@ import com.google.firebase.auth.FirebaseUser;
 public class MainActivity extends AppCompatActivity {
 
     private AppBarConfiguration mAppBarConfiguration;
-    private static final int SPLASH_TIME_OUT = 4000;
+    private static final int SPLASH_TIME_OUT = 7000;
     AppPreferencesManager preferencesManager;
     FirebaseAuth fAuth;
     FirebaseUser user;

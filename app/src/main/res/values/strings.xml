@@ -24,5 +24,5 @@
     <string name="menu_home">Home</string>
     <string name="menu_gallery">Gallery</string>
     <string name="menu_slideshow">Slideshow</string>
-    <string name="mapbox_access_token"> </string>
+    <string name="mapbox_access_token">sk.eyJ1IjoidHVnYXMiLCJhIjoiY2t3dGZoMHg0MWZ4MDJ3cDNucjRxbGpzeSJ9.-QDMLkDEXNVKGncGHCPzAw</string>
 </resources>

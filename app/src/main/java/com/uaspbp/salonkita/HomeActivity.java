@@ -23,6 +23,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ImageView;
@@ -180,11 +181,11 @@ public class HomeActivity extends AppCompatActivity {
                     || super.onSupportNavigateUp();
         }
 
-//        @Override
-//        public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-//            NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
-//            return NavigationUI.onNavDestinationSelected(item, navController) || super.onOptionsItemSelected(item);
-//
-//        }
+        @Override
+        public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+            NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
+            return NavigationUI.onNavDestinationSelected(item, navController) || super.onOptionsItemSelected(item);
+
+        }
 
 }

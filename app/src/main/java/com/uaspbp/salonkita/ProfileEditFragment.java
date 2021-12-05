@@ -86,6 +86,7 @@ public class ProfileEditFragment extends Fragment {
         });
 
         StorageReference profileRef = storageReference.child("users/" + fAuth.getCurrentUser().getUid() + "/profile.jpg");
+
         profileRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
             @Override
             public void onSuccess(Uri uri) {
@@ -199,7 +200,7 @@ public class ProfileEditFragment extends Fragment {
     }
 
     private void uploadImageToFirebase(byte[] bb) {
-//        // uplaod image to firebase storage
+//        // up gambar ke firebase storage
         StorageReference fileRef = storageReference.child("users/" + fAuth.getCurrentUser().getUid() + "/profile.jpg");
         fileRef.putBytes(bb).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
             @Override
@@ -215,7 +216,7 @@ public class ProfileEditFragment extends Fragment {
     }
 
     private void uploadImageToFirebase1(Uri imageUri) {
-        // uplaod image to firebase storage
+        //        // up gambar ke firebase storage
         StorageReference fileRef = storageReference.child("users/" + fAuth.getCurrentUser().getUid() + "/profile.jpg");
         fileRef.putFile(imageUri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
             @Override

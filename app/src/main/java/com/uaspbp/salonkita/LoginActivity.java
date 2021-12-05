@@ -8,8 +8,13 @@ import android.content.Intent;
 import android.graphics.Paint;
 import android.os.Build;
 import android.os.Bundle;
+import android.text.method.HideReturnsTransformationMethod;
+import android.text.method.PasswordTransformationMethod;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -18,9 +23,11 @@ import androidx.appcompat.app.AppCompatDelegate;
 import androidx.core.app.NotificationCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
@@ -32,7 +39,9 @@ public class LoginActivity extends AppCompatActivity {
     private String CHANNEL_ID = "channel 2";
 
     TextInputEditText emailLogin,passwordLogin;
-    Button Login,Register;
+    Button Login,Register, btnClear;
+    CheckBox cbShowPw;
+    TextView textview;
     FirebaseAuth firebaseAuth;
     AppPreferencesManager preferencesManager;
 
@@ -52,6 +61,10 @@ public class LoginActivity extends AppCompatActivity {
         passwordLogin = findViewById(R.id.edtPasswordLogin);
         firebaseAuth = FirebaseAuth.getInstance();
         Register = findViewById(R.id.btnRegister1);
+        Login = findViewById(R.id.btnLogin);
+        btnClear = findViewById(R.id.btnClear);
+        textview = findViewById(R.id.textview);
+        cbShowPw = findViewById(R.id.cbShowPw);
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O){
             String CHANNEL_ID = "Channel 1";
@@ -63,6 +76,17 @@ public class LoginActivity extends AppCompatActivity {
             NotificationManager notificationManager = getSystemService(NotificationManager.class);
             notificationManager.createNotificationChannel(channel);
         }
+
+        cbShowPw.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked) {
+                    passwordLogin.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
+                } else {
+                    passwordLogin.setTransformationMethod(PasswordTransformationMethod.getInstance());
+                }
+            }
+        });
 
         FirebaseMessaging.getInstance().subscribeToTopic("news")
                 .addOnCompleteListener(new OnCompleteListener<Void>(){
@@ -84,6 +108,31 @@ public class LoginActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+        btnClear.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view) {
+                //temp inputan data
+                String tempemail = emailLogin.getText().toString();
+                String temppassword = passwordLogin.getText().toString();
+
+                //  Mengkosongkan Input
+                emailLogin.setText("");
+                passwordLogin.setText("");
+
+                //  Memunculkan SnackBar
+                Snackbar.make(textview,"Text Cleared Success",Snackbar.LENGTH_LONG)
+                        .setAction("Cancel", new View.OnClickListener() {
+                            @Override
+                            public void onClick(View view) {
+                                emailLogin.setText(tempemail);
+                                passwordLogin.setText(temppassword);
+                            }
+                        })
+                        .show();
+            }
+        });
+
         Login = findViewById(R.id.btnLogin);
 
         Login.setOnClickListener(new View.OnClickListener() {
@@ -92,12 +141,10 @@ public class LoginActivity extends AppCompatActivity {
                 if(emailLogin.getText().toString().equalsIgnoreCase("admin") && passwordLogin.getText().toString().trim().equalsIgnoreCase("admin"))
                 {
                     Toast.makeText(LoginActivity.this, "Success", Toast.LENGTH_SHORT).show();
-//                    Fragment fragment = new "belum isi"Fragment();
-//                    FragmentManager fragmentManager = getSupportFragmentManager();
-//                    Fragment"belum isi 2" fragment"belum isi 2" = fragmentManager.begin"belum isi 2"();
-//                    fragment"belum isi 2".replace(R.id.admin, fragment);
-//                    fragment"belum isi 2".addToBackStack(null);
-//                    fragment"belum isi 2".commit();
+
+                    FragmentManager fragmentManager = getSupportFragmentManager();
+
+
                 }
                 else
                 {
