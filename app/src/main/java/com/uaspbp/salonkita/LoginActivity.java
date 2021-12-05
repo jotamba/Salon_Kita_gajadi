@@ -18,7 +18,6 @@ import androidx.appcompat.app.AppCompatDelegate;
 import androidx.core.app.NotificationCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -29,7 +28,9 @@ import com.google.firebase.messaging.FirebaseMessaging;
 
 
 public class LoginActivity extends AppCompatActivity {
+
     private String CHANNEL_ID = "channel 2";
+
     TextInputEditText emailLogin,passwordLogin;
     Button Login,Register;
     FirebaseAuth firebaseAuth;
@@ -45,6 +46,7 @@ public class LoginActivity extends AppCompatActivity {
             AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
 
         }
+
         setContentView(R.layout.activity_login);
         emailLogin = findViewById(R.id.edtEmailLogin);
         passwordLogin = findViewById(R.id.edtPasswordLogin);
@@ -66,7 +68,7 @@ public class LoginActivity extends AppCompatActivity {
                 .addOnCompleteListener(new OnCompleteListener<Void>(){
                     @Override
                     public void onComplete(@NonNull Task<Void> task){
-                        String mag = "Welcome!!";
+                        String mag = "Selamat Datang :)";
                         if(!task.isSuccessful()){
                             mag = "Failed";
                         }
@@ -90,12 +92,12 @@ public class LoginActivity extends AppCompatActivity {
                 if(emailLogin.getText().toString().equalsIgnoreCase("admin") && passwordLogin.getText().toString().trim().equalsIgnoreCase("admin"))
                 {
                     Toast.makeText(LoginActivity.this, "Success", Toast.LENGTH_SHORT).show();
-//                    Fragment fragment = new FoodFragment();
-                    FragmentManager fragmentManager = getSupportFragmentManager();
-                    FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-//                    fragmentTransaction.replace(R.id.admin, fragment);
-                    fragmentTransaction.addToBackStack(null);
-                    fragmentTransaction.commit();
+//                    Fragment fragment = new "belum isi"Fragment();
+//                    FragmentManager fragmentManager = getSupportFragmentManager();
+//                    Fragment"belum isi 2" fragment"belum isi 2" = fragmentManager.begin"belum isi 2"();
+//                    fragment"belum isi 2".replace(R.id.admin, fragment);
+//                    fragment"belum isi 2".addToBackStack(null);
+//                    fragment"belum isi 2".commit();
                 }
                 else
                 {
@@ -111,14 +113,14 @@ public class LoginActivity extends AppCompatActivity {
                             public void onComplete(@NonNull Task<AuthResult> task) {
                                 if (task.isSuccessful()) {
                                     if(firebaseAuth.getCurrentUser().isEmailVerified()){
-                                        Toast.makeText(LoginActivity.this, "Login successfully", Toast.LENGTH_LONG).show();
+                                        Toast.makeText(LoginActivity.this, "Login Berhasil", Toast.LENGTH_LONG).show();
                                         Intent intent = new Intent(LoginActivity.this, HomeActivity.class); //main harus ubah ke homepage
                                         startActivity(intent);
                                         createNotificationChannel();
                                         addNotification();
                                         finish();
                                     }else{
-                                        Toast.makeText(LoginActivity.this, "Please Verify Your Email !!", Toast.LENGTH_SHORT).show();
+                                        Toast.makeText(LoginActivity.this, "Silahkan Verifikasi Email Anda !!", Toast.LENGTH_SHORT).show();
                                     }
                                 } else {
                                     Toast.makeText(LoginActivity.this,task.getException().getMessage(), Toast.LENGTH_LONG).show();

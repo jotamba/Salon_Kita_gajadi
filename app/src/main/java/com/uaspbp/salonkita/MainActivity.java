@@ -18,12 +18,15 @@ public class MainActivity extends AppCompatActivity {
     AppPreferencesManager preferencesManager;
     FirebaseAuth fAuth;
     FirebaseUser user;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         fAuth = FirebaseAuth.getInstance();
         user = fAuth.getCurrentUser();
         preferencesManager = new AppPreferencesManager(this);
+
         if (preferencesManager.getDarkModeState()) {
             AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
         } else {
@@ -41,7 +44,7 @@ public class MainActivity extends AppCompatActivity {
                     startActivity(homeIntentLogin);
                 }
                 else{
-                    Intent homeIntent = new Intent(MainActivity.this, MessagingService.ActivityLogin.class);
+                    Intent homeIntent = new Intent(MainActivity.this, LoginActivity.class);
                     startActivity(homeIntent);
                     finish();
                 }

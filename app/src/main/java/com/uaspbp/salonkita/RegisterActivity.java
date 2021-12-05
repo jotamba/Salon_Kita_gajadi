@@ -69,7 +69,7 @@ public class RegisterActivity extends AppCompatActivity {
         backLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(RegisterActivity.this, MessagingService.ActivityLogin.class);
+                Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
                 startActivity(intent);
             }
         });
@@ -112,16 +112,16 @@ public class RegisterActivity extends AppCompatActivity {
                                 userz.sendEmailVerification().addOnSuccessListener(new OnSuccessListener<Void>() {
                                     @Override
                                     public void onSuccess(Void aVoid) {
-                                        Toast.makeText(RegisterActivity.this, "Verification Email Has Been Sent", Toast.LENGTH_SHORT).show();
+                                        Toast.makeText(RegisterActivity.this, "Email Verifikasi Telah Dikirim", Toast.LENGTH_SHORT).show();
                                     }
                                 }).addOnFailureListener(new OnFailureListener() {
                                     @Override
                                     public void onFailure(@NonNull Exception e) {
-                                        Log.d(TAG, "onFailure: Email not sent!! Check Again Please!! " + e.getMessage());
+                                        Log.d(TAG, "onFailure: Email Tidak Terkirim!! Silahkan Cek Kembali!! " + e.getMessage());
                                     }
                                 });
 
-                                Toast.makeText(RegisterActivity.this, "Registered successfully", Toast.LENGTH_LONG).show();
+                                Toast.makeText(RegisterActivity.this, "Proses Registrasi Berhasil", Toast.LENGTH_LONG).show();
                                 userID = firebaseAuth.getCurrentUser().getUid();
                                 DocumentReference documentReference = fStore.collection("users").document(userID);
                                 Map<String,Object> user = new HashMap<>();
@@ -143,7 +143,7 @@ public class RegisterActivity extends AppCompatActivity {
                                         Log.d(TAG, "onFailure : "+ e.toString());
                                     }
                                 });
-                                startActivity(new Intent(getApplicationContext(), MessagingService.ActivityLogin.class));
+                                startActivity(new Intent(getApplicationContext(), LoginActivity.class));
                             } else {
                                 Toast.makeText(RegisterActivity.this, task.getException().getMessage(), Toast.LENGTH_LONG).show();
                             }

@@ -44,17 +44,7 @@ import java.io.ByteArrayOutputStream;
 import java.util.HashMap;
 import java.util.Map;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link ProfileEditFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
 public class ProfileEditFragment extends Fragment {
-
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
 
     public static final String TAG = "TAG";
     private static final int CAMERA_PERM_CODE = 101;
@@ -70,41 +60,6 @@ public class ProfileEditFragment extends Fragment {
     FirebaseFirestore fStore;
     FirebaseUser user;
     StorageReference storageReference;
-
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
-
-    public ProfileEditFragment() {
-        // Required empty public constructor
-    }
-
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment ProfileEditFragment.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static ProfileEditFragment newInstance(String param1, String param2) {
-        ProfileEditFragment fragment = new ProfileEditFragment();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
-    }
-
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
-    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -193,7 +148,7 @@ public class ProfileEditFragment extends Fragment {
     }
 
     private void askCameraPermissions() {
-        if(ContextCompat.checkSelfPermission(getActivity(), Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED){
+        if(ContextCompat.checkSelfPermission(getActivity(),Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED){
             ActivityCompat.requestPermissions(getActivity(),new String[] {Manifest.permission.CAMERA}, CAMERA_PERM_CODE);
         }else {
             openCamera();
@@ -236,7 +191,7 @@ public class ProfileEditFragment extends Fragment {
         Bitmap image = (Bitmap) data.getExtras().get("data");
         ByteArrayOutputStream bytes = new ByteArrayOutputStream();
         image.compress(Bitmap.CompressFormat.JPEG, 90, bytes);
-        byte bb[] = bytes.toByteArray();
+        byte[] bb = bytes.toByteArray();
         String file = Base64.encodeToString(bb, Base64.DEFAULT);
         profileImageView.setImageBitmap(image);
 
