@@ -136,7 +136,7 @@ public class HomeActivity extends AppCompatActivity {
         }
         private void darkMode (boolean b){
             preferencesManager.setDarkModeState(b);
-            Toast.makeText(this,"Sedang Menggati Tema!", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this,"Sedang Mengganti Tema!", Toast.LENGTH_SHORT).show();
             Handler handler = new Handler();
             handler.postDelayed(new Runnable() {
                 @Override
